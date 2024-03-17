@@ -1,10 +1,28 @@
 <script>
   import { onMount } from "svelte";
-  import { fade } from "svelte/transition";
+  import { quintOut } from "svelte/easing";
+  import { fade, scale, slide, fly } from "svelte/transition";
   import car from "$lib/car.jpg";
   import logo from "$lib/th-r.png";
+  import topCar from "$lib/topCar.jpg";
+  import backCar from "$lib/backCar.jpg";
+  import Hover from "./components/Hover.svelte";
+  import Carousel from 'svelte-carousel'
 
   let fadeIn = false;
+  let isHovered = false;
+  let active = false;
+  let navigating = false;
+  let slidee = false;
+
+  const images = [
+    { name: "topCar", car: topCar },
+    { name: "backCar", car: backCar },
+  ];
+
+  function toggleSlidee() {
+    slidee = true;
+  }
 
   function toggleFadeIn() {
     fadeIn = true;
@@ -12,29 +30,49 @@
 
   onMount(() => {
     toggleFadeIn();
+    toggleSlidee();
   });
 
-  let active = false, navigating = false;
+  function handleMouseEnter() {
+    isHovered = true;
+  }
 
+  function handleMouseLeave() {
+    isHovered = false;
+  }
 
+  let y = 10;
 </script>
+
+<svelte:window bind:scrollY={y} />
 
 <main>
   <div class="bigb">
     <div class="bg-opacity-10 text-slate-50 py-5 z-10">
-      <nav class="mt-32">
+      <nav class="border-b-2 border-stone-100">
         <ul class="text-xl flex justify-center">
-          <div class="flex mx-10">
-            <a class:active on:mouseenter={() => {
-              console.log("enter", navigating);
-              if (!navigating) {
-                active = true;
-              }
-            }} href="/" class="mr-20">Home</a>
-            
-            <a href="/store" class="mr-20">Store</a>
-            <a class="py-8-" href="https://www.instagram.com/blackpearlracingteam/">
-              <img class="w-11 h-11" src={logo} />
+          <div class=" flex">
+            <a
+              class="font-quest scaleInOut mt-2 ml-10"
+              on:mouseenter={handleMouseEnter}
+              on:mouseleave={handleMouseLeave}
+              href="/">Home</a
+            >
+
+            <a
+              class="font-quest scaleInOut mt-2 ml-10"
+              on:mouseenter={handleMouseEnter}
+              on:mouseleave={handleMouseLeave}
+              href="/store">Store</a
+            >
+
+            <a
+              class="scaleInOut mt-0.5 ml-10"
+              on:mouseenter={handleMouseEnter}
+              on:mouseleave={handleMouseLeave}
+              href="https://www.instagram.com/blackpearlracingteam/"
+            >
+              <img class="w-11 h-11" src={logo} alt="Instagram Logo" />
             </a>
           </div>
         </ul>
@@ -42,36 +80,76 @@
     </div>
     {#if fadeIn}
       <div
-        class=" flex flex-col mx-32 my-48 items-center"
+        class=" flex flex-col xl:mt-28 sm:mt-[100px] items-center"
         transition:fade={{ duration: 2000 }}
       >
-        <h1 class="text-9xl text-slate-50">Black Pearl XIV</h1>
+        <h1 class="font-quest align-center text-8xl text-slate-50">
+          Black Pearl XIV
+        </h1>
         <div>
-          <h1 class="pt-8 text-2xl text-slate-50">
+          <h1 class="font-quest pt-8 text-2xl text-slate-50">
             " Train man wins since 2007 "
           </h1>
         </div>
       </div>
     {/if}
-
-    <footer></footer>
   </div>
   <div class="h-screen flex items-center justify-center">
-    <img class="object-cover h-full w-full" src={car} />
+    <img class="object-cover h-full w-full" src={car} alt="bigcar" />
   </div>
 
-  <div class="flex">
-    <div class="w- h-24">
-      <h1>About us</h1>
-      <p>Our team has been founded since 2007 by Prof.Chutima</p>
+  <div class="mt-24 text-zinc-50 flex mb-16">
+    {#if flyIn}
+    <div class=" flex-1">
+      <div
+        transition:fly={{
+          delay: 250,
+          duration: 3000,
+          x: 1000,
+        }}
+        class="pl-10 pt-5 pr-10 ml-24 mt-24 h-[300px] w-[550px] bg-orange-500"
+      >
+        <h1 class="text-xl font-quest">About us</h1>
+        <p class="font-quest">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
+      </div>
+    </div>
+    <div class="flex-1 w-96">
+      <!-- <Carousel
+        pauseOnFocus
+        autoplay
+        autoplayDuration={5000}
+      >
+        {#each images as image}
+          <img src={image.car} alt={image.name} class="h-42 w-42" />
+        {/each}
+      </Carousel> -->
+
     </div>
   </div>
+
+  <footer></footer>
 </main>
 
 <style lang="postcss">
   :global(body) {
     margin: 0;
-    
+  }
+
+  nav {
+    /* border: 1px solid rgb(255, 255, 255); */
+    /* border-width: 2px; */
+    padding: 20px;
+  }
+
+  .scaleInOut {
+    transition: transform 0.3s ease-in-out; /* Define transition */
+  }
+
+  .scaleInOut:hover {
+    transform: scale(1.3); /* Scale up on hover */
+    text-decoration: underline;
   }
 
   .bigb {
@@ -90,4 +168,3 @@
     z-index: auto;
   }
 </style>
-
