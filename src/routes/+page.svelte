@@ -99,34 +99,38 @@
   </div>
 
   <div class="mt-24 text-zinc-50 flex mb-16">
-    {#if flyIn}
-    <div class=" flex-1">
-      <div
-        transition:fly={{
-          delay: 250,
-          duration: 3000,
-          x: 1000,
-        }}
-        class="pl-10 pt-5 pr-10 ml-24 mt-24 h-[300px] w-[550px] bg-orange-500"
-      >
-        <h1 class="text-xl font-quest">About us</h1>
-        <p class="font-quest">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </p>
+    {#if y>50}
+      <div class="flex-1">
+        <div
+          transition:fly={{
+            delay: 250,
+            duration: 2000,
+            x: -300,
+          }}
+          class="pl-10 pt-5 pr-10 ml-24 mt-24 h-[300px] w-[550px] bg-orange-500"
+        >
+          <h1 class="text-xl font-quest">About us</h1>
+          <p class="font-quest">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          </p>
+        </div>
       </div>
-    </div>
+    {/if}
+
+    {#if y>50}
     <div class="flex-1 w-96">
-      <!-- <Carousel
+      <Carousel
         pauseOnFocus
         autoplay
-        autoplayDuration={5000}
+        autoplayDuration={2000}
       >
         {#each images as image}
           <img src={image.car} alt={image.name} class="h-42 w-42" />
         {/each}
-      </Carousel> -->
+      </Carousel>
 
     </div>
+    {/if}
   </div>
 
   <footer></footer>
