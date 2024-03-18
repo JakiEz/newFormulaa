@@ -56,7 +56,7 @@
               class="font-quest scaleInOut mt-2 ml-10"
               on:mouseenter={handleMouseEnter}
               on:mouseleave={handleMouseLeave}
-              href="/">Home</a
+              href="/store">Home</a
             >
 
             <a
@@ -80,10 +80,10 @@
     </div>
     {#if fadeIn}
       <div
-        class=" flex flex-col xl:mt-28 sm:mt-[100px] items-center"
+        class=" flex flex-col desktop:mt-48 notebook:mt-[100px] items-center"
         transition:fade={{ duration: 2000 }}
       >
-        <h1 class="font-quest align-center text-8xl text-slate-50">
+        <h1 class="font-quest align-center notebook:text-9xl desktop:tex text-slate-50">
           Black Pearl XIV
         </h1>
         <div>
@@ -104,12 +104,13 @@
         <div
           transition:fly={{
             delay: 250,
-            duration: 2000,
+            duration: 1000,
             x: -300,
           }}
-          class="pl-10 pt-5 pr-10 ml-24 mt-24 h-[300px] w-[550px] bg-orange-500"
+          class="pl-10 pt-5 pr-10 notebook:ml-24 notebook:mt-[120px] desktop:ml-48 desktop:mt-48 h-[300px] w-[550px] bg-orange-500"
         >
-          <h1 class="text-xl font-quest">About us</h1>
+          <h1 class="text-2xl font-quest-bold">About us</h1>
+          <div class="h-2"/>
           <p class="font-quest">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
           </p>
@@ -118,22 +119,30 @@
     {/if}
 
     {#if y>50}
-    <div class="flex-1 w-96">
-      <Carousel
-        pauseOnFocus
-        autoplay
-        autoplayDuration={2000}
-      >
-        {#each images as image}
-          <img src={image.car} alt={image.name} class="h-42 w-42" />
-        {/each}
-      </Carousel>
-
-    </div>
+      <div class="flex-1 w-96">
+        <Carousel
+          pauseOnFocus
+          autoplay
+          autoplayDuration={2000}
+        >
+          {#each images as image}
+            <img src={image.car} alt={image.name} class="h-42 w-42" />
+          {/each}
+        </Carousel>
+      </div>
     {/if}
   </div>
 
-  <footer></footer>
+  <div class="">
+
+  </div>
+
+
+
+  <footer class="flex  bg-orange-200 h-72 border-width:20px">
+
+    <h2 class="self-center font-quest">Contact us</h2>
+  </footer>
 </main>
 
 <style lang="postcss">
