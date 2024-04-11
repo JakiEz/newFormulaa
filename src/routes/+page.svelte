@@ -2,8 +2,9 @@
   import { onMount } from "svelte";
   import { quintOut } from "svelte/easing";
   import { fade, scale, slide, fly } from "svelte/transition";
-  import car from "$lib/car.jpg";
+  import car from "$lib/image.png";
   import logo from "$lib/th-r.png";
+  import background from "$lib/background.png"
   import topCar from "$lib/topCar.jpg";
   import backCar from "$lib/backCar.jpg";
   import Hover from "./components/Hover.svelte";
@@ -48,8 +49,8 @@
 
 <main>
   <div class="bigb">
-    <div class="bg-opacity-10 text-slate-50 py-5 z-10">
-      <nav class="border-b-2 border-stone-100">
+    <div class="bg-opacity-10 sticky top-0 text-slate-50 mt-50 z-10">
+      <nav class="bg-black/30 border-b-2 bg-clip-padding backdrop-blur-xl border-stone-100">
         <ul class="text-xl flex justify-center">
           <div class=" flex">
             <a
@@ -83,11 +84,11 @@
         class=" flex flex-col desktop:mt-48 notebook:mt-[100px] items-center"
         transition:fade={{ duration: 2000 }}
       >
-        <h1 class="font-quest align-center notebook:text-9xl desktop:tex text-slate-50">
+        <h1 class="font-quest align-center font-bold text-opacity-60 notebook:text-[200px] desktop:text-[230px] text-white">
           Black Pearl XIV
         </h1>
         <div>
-          <h1 class="font-quest pt-8 text-2xl text-slate-50">
+          <h1 class="font-quest pt-8 desktop:text-[30px] text-2xl text-opacity-60 text-white">
             " Train man wins since 2007 "
           </h1>
         </div>
@@ -95,7 +96,7 @@
     {/if}
   </div>
   <div class="h-screen flex items-center justify-center">
-    <img class="object-cover h-full w-full" src={car} alt="bigcar" />
+    <img class="object-cover h-full w-full" src={background} alt="bigcar" />
   </div>
 
   <div class="mt-24 text-zinc-50 flex mb-16">
