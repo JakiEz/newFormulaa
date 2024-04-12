@@ -6,6 +6,7 @@
   import logo from "$lib/th-r.png";
   import background from "$lib/background.png"
   import topCar from "$lib/topCar.jpg";
+  import teamLogo from "$lib/logoT.png"
   import backCar from "$lib/backCar.jpg";
   import Hover from "./components/Hover.svelte";
   import Carousel from 'svelte-carousel'
@@ -43,53 +44,61 @@
   }
 
   let y = 10;
+  let gen = "XV";
+  let sticky = true;
 </script>
 
 <svelte:window bind:scrollY={y} />
 
 <main>
   <div class="bigb">
-    <div class="bg-opacity-10 sticky top-0 text-slate-50 mt-50 z-10">
-      <nav class="bg-black/30 border-b-2 bg-clip-padding backdrop-blur-xl border-stone-100">
-        <ul class="text-xl flex justify-center">
-          <div class=" flex">
-            <a
-              class="font-quest scaleInOut mt-2 ml-10"
-              on:mouseenter={handleMouseEnter}
-              on:mouseleave={handleMouseLeave}
-              href="/store">Home</a
-            >
-
-            <a
-              class="font-quest scaleInOut mt-2 ml-10"
-              on:mouseenter={handleMouseEnter}
-              on:mouseleave={handleMouseLeave}
-              href="/store">Store</a
-            >
-
-            <a
-              class="scaleInOut mt-0.5 ml-10"
-              on:mouseenter={handleMouseEnter}
-              on:mouseleave={handleMouseLeave}
-              href="https://www.instagram.com/blackpearlracingteam/"
-            >
-              <img class="w-11 h-11" src={logo} alt="Instagram Logo" />
-            </a>
+    <nav class={`bg-black/0 ${sticky ? "sticky top-0" : "fixed"} border-b-2 bg-clip-padding backdrop-blur-xl border-stone-100`}>
+      <img class="w-24 absolute ml-12 mt-[-20px]" alt="logo team "src={teamLogo}/>
+      <ul class="text-xl ">
+        <div class="text-white  flex justify-center">
+          <div>
           </div>
-        </ul>
-      </nav>
-    </div>
+          <a
+            class="font-quest scaleInOut mt-2 ml-10"
+            on:mouseenter={handleMouseEnter}
+            on:mouseleave={handleMouseLeave}
+            href="/store">Home</a
+          >
+
+          <a
+            class="font-quest scaleInOut mt-2 ml-10"
+            on:mouseenter={handleMouseEnter}
+            on:mouseleave={handleMouseLeave}
+            href="/store">Store</a
+          >
+
+          <a
+            class="scaleInOut mt-0.5 ml-10"
+            on:mouseenter={handleMouseEnter}
+            on:mouseleave={handleMouseLeave}
+            href="https://www.instagram.com/blackpearlracingteam/"
+          >
+            <img class="w-11 h-11" src={logo} alt="Instagram Logo" />
+          </a>
+          
+        </div>
+      </ul>
+    </nav>
+
+    
     {#if fadeIn}
+      <!-- <div class="bg-orange-500 w-96 h-96 absolute z-2" transition:fade={{ duration: 2000 }}/> -->
+        
       <div
-        class=" flex flex-col desktop:mt-48 notebook:mt-[100px] items-center"
+        class=" flex flex-col desktop:mt-48 notebook:mt-[100px] items-center z-1"
         transition:fade={{ duration: 2000 }}
       >
-        <h1 class="font-quest align-center font-bold text-opacity-60 notebook:text-[200px] desktop:text-[230px] text-white">
-          Black Pearl XIV
+        <h1 class="font-quest align-center font-bold text-opacity-100 notebook:text-[200px] desktop:text-[230px] text-white">
+          Black Pearl {gen}
         </h1>
         <div>
-          <h1 class="font-quest pt-8 desktop:text-[30px] text-2xl text-opacity-60 text-white">
-            " Train man wins since 2007 "
+          <h1 class="font-quest  desktop:text-[30px] text-2xl text-opacity-100 text-white">
+            " Trained man wins since 2007 "
           </h1>
         </div>
       </div>
@@ -140,10 +149,19 @@
 
 
 
-  <footer class="flex  bg-orange-200 h-72 border-width:20px">
-
-    <h2 class="self-center font-quest">Contact us</h2>
-  </footer>
+  <div class="flex flex-col items-center border-t-4 pt-5 mb-10">
+      <h1 class="text-xl font-bold font-quest">Contact us</h1>
+      
+      <p class="font-quest mt-8">
+        tel: +7 (999) 99
+      </p>
+      <p class="font-quest mt-2">
+        instagram : blackpearlracingteam
+      </p>
+      <p class="font-quest mt-2">
+        facebook : blackpearlracingteam
+      </p>
+  </div>
 </main>
 
 <style lang="postcss">
