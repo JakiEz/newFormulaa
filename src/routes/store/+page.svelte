@@ -1,20 +1,23 @@
-<script>
+<script lang="ts">
   import logo from "$lib/th-r.png";
   import teamLogo from "$lib/logoT.png";
-
+  import shirt from "$lib/shirtRemove.png";
+  import Card from "../components/Card.svelte";
   let sticky = true;
   let isHovered = false;
 
   function handleMouseEnter() {
     isHovered = true;
   }
+
   function handleMouseLeave() {
     isHovered = false;
   }
+
 </script>
 
-<main>
-    <div class="bg-slate-500">
+<main class="bg-gray-400">
+    <div>
         <nav
           class={`bg-black/0 ${sticky ? "sticky top-0" : "fixed"} border-b-2 bg-clip-padding backdrop-blur-xl border-stone-100`}
         >
@@ -23,9 +26,9 @@
             alt="logo team "
             src={teamLogo}
           />
-          <ul class="text-xl">
+          <ul class=" text-xl">
             <div class="text-white flex justify-center">
-              <div></div>
+              
               <a
                 class="font-quest scaleInOut mt-2 ml-10"
                 on:mouseenter={handleMouseEnter}
@@ -52,13 +55,50 @@
           </ul>
         </nav>
     </div>
+    <div>
+      <div class="grid grid-cols-3 gap-y-10 mt-24 justify-items-center">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+          <!-- <div class="flex flex-col w-36 h-36 bg-slate-600 justify-items-center">
+            <img class="w-24 h-24 " alt=shirt src={shirt}/>
+            <p>T-Shirt</p>
+          </div> -->
+          
+      </div>
+      
+    </div>
+    
+
+  
+    
+ 
+
    
-        <div class="grid grid-cols-3 item-center">
-            <div class="w-8 h-8 bg-slate-600"/>
-            <div class="w-8 h-8 bg-slate-600"/>
-            <div class="w-8 h-8 bg-slate-600"/>
-            <div class="w-8 h-8 bg-slate-600"/>
-        </div>
    
 </main>
 
