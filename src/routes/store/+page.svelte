@@ -12,7 +12,7 @@
 
   function handleMouseLeave() {
     isHovered = false;
-  }
+  }4
 
 </script>
 

@@ -93,11 +93,11 @@
         class=" flex flex-col desktop:mt-48 notebook:mt-[100px] items-center z-1"
         transition:fade={{ duration: 2000 }}
       >
-        <h1 class="font-quest align-center font-bold text-opacity-100 notebook:text-[200px] desktop:text-[230px] text-white">
+        <h1 class="font-spyagency align-center font-bold text-opacity-100 notebook:text-[200px] desktop:text-[230px] text-white">
           Black Pearl {gen}
         </h1>
         <div>
-          <h1 class="font-quest  desktop:text-[30px] text-2xl text-opacity-100 text-white">
+          <h1 class="font-sofia  desktop:text-[30px] text-2xl text-opacity-100 text-white">
             " Trained man wins since 2007 "
           </h1>
         </div>
