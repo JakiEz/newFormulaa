@@ -1,10 +1,14 @@
 <script lang="ts">
   import logo from "$lib/th-r.png";
   import teamLogo from "$lib/logoT.png";
-  import shirt from "$lib/shirtRemove.png";
+  import shirtR from "$lib/shirtRemove.png";
   import Card from "../components/Card.svelte";
+  import { fade, scale, slide, fly } from "svelte/transition";
+  import { onMount } from "svelte";
   let sticky = true;
   let isHovered = false;
+
+  let items = ["one", "two", "three", "four","five","six","seven"];
 
   function handleMouseEnter() {
     isHovered = true;
@@ -12,98 +16,80 @@
 
   function handleMouseLeave() {
     isHovered = false;
-  }4
+  }
+  let y = false;
 
+  onMount(() => {
+    y = true;
+  });
 </script>
 
-<main class="bg-gray-400">
-    <div>
-        <nav
-          class={`bg-black/0 ${sticky ? "sticky top-0" : "fixed"} border-b-2 bg-clip-padding backdrop-blur-xl border-stone-100`}
+<main class="bg-black">
+  <nav
+    class={`bg-black/30 ${sticky ? "sticky top-0" : "fixed"} border-b-2 bg-clip-padding backdrop-blur-xl border-stone-100`}
+  >
+    <img
+      class="w-24 absolute ml-12 mt-[-20px]"
+      alt="logo team "
+      src={teamLogo}
+    />
+    <ul class=" text-xl">
+      <div class="text-white flex justify-center">
+        <a
+          class="font-quest scaleInOut mt-2 ml-10"
+          on:mouseenter={handleMouseEnter}
+          on:mouseleave={handleMouseLeave}
+          href="/">Home</a
         >
-          <img
-            class="w-24 absolute ml-12 mt-[-20px]"
-            alt="logo team "
-            src={teamLogo}
-          />
-          <ul class=" text-xl">
-            <div class="text-white flex justify-center">
-              
-              <a
-                class="font-quest scaleInOut mt-2 ml-10"
-                on:mouseenter={handleMouseEnter}
-                on:mouseleave={handleMouseLeave}
-                href="/">Home</a
-              >
-      
-              <a
-                class="font-quest scaleInOut mt-2 ml-10"
-                on:mouseenter={handleMouseEnter}
-                on:mouseleave={handleMouseLeave}
-                href="/store">Store</a
-              >
-      
-              <a
-                class="scaleInOut mt-0.5 ml-10"
-                on:mouseenter={handleMouseEnter}
-                on:mouseleave={handleMouseLeave}
-                href="https://www.instagram.com/blackpearlracingteam/"
-              >
-                <img class="w-11 h-11" src={logo} alt="Instagram Logo" />
-              </a>
-            </div>
-          </ul>
-        </nav>
-    </div>
-    <div>
-      <div class="grid grid-cols-3 gap-y-10 mt-24 justify-items-center">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-          <!-- <div class="flex flex-col w-36 h-36 bg-slate-600 justify-items-center">
-            <img class="w-24 h-24 " alt=shirt src={shirt}/>
-            <p>T-Shirt</p>
-          </div> -->
-          
+
+        <a
+          class="font-quest scaleInOut mt-2 ml-10"
+          on:mouseenter={handleMouseEnter}
+          on:mouseleave={handleMouseLeave}
+          href="/store">Store</a
+        >
+
+        <a
+          class="scaleInOut mt-0.5 ml-10"
+          on:mouseenter={handleMouseEnter}
+          on:mouseleave={handleMouseLeave}
+          href="https://www.instagram.com/blackpearlracingteam/"
+        >
+          <img class="w-11 h-11" src={logo} alt="Instagram Logo" />
+        </a>
       </div>
-      
+    </ul>
+  </nav>
+  {#if y}
+    <div
+      in:fly={{ x: -500, duration: 2000, delay: 250 }}
+      out:fly={{ x: 500, duration: 2000 }}
+      class="bg-orange-400 flex justify-between"
+    >
+      <h1
+        in:fly={{ x: -500, duration: 3000, delay: 500 }}
+        out:fly={{ x: 500, duration: 3000 }}
+        class="font-quest ml-24 text-white p-12 text-6xl"
+      >
+        Merchadise
+      </h1>
+      <div class="flex">
+        <h1 class="text-white font-quest text-2xl p-12">Caps</h1>
+        <h1 class="text-white font-quest text-2xl p-12">Shirt</h1>
+        <h1 class="text-white font-quest text-2xl p-12">Models</h1>
+
+      </div>
     </div>
-    
-
-  
-    
- 
-
-   
-   
+  {/if} 
+  <div class="grid grid-cols-3 gap-y-10 mt-24 justify-items-center -z-10">
+    {#each items as item}
+      <Card shirt={shirtR} items={item} />
+    {/each}
+  </div>
 </main>
 
 <style lang="postcss">
-    :global(body) {
+  :global(body) {
     margin: 0;
   }
 

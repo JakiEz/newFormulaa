@@ -4,12 +4,14 @@
   import { fade, scale, slide, fly } from "svelte/transition";
   import car from "$lib/image.png";
   import logo from "$lib/th-r.png";
-  import background from "$lib/background.png"
+  import background from "$lib/background.png";
   import topCar from "$lib/topCar.jpg";
-  import teamLogo from "$lib/logoT.png"
+  import teamLogo from "$lib/logoT.png";
   import backCar from "$lib/backCar.jpg";
   import Hover from "./components/Hover.svelte";
-  import Carousel from 'svelte-carousel'
+  import Carousel from "svelte-carousel";
+  import vid from "$lib/appsomething.mp4";
+  import VideoPlayer from "./components/videoPlayer.svelte";
 
   let fadeIn = false;
   let isHovered = false;
@@ -52,12 +54,17 @@
 
 <main>
   <div class="bigb">
-    <nav class={`bg-black/0 ${sticky ? "sticky top-0" : "fixed"} border-b-2 bg-clip-padding backdrop-blur-xl border-stone-100`}>
-      <img class="w-24 absolute ml-12 mt-[-20px]" alt="logo team "src={teamLogo}/>
-      <ul class="text-xl ">
-        <div class="text-white  flex justify-center">
-          <div>
-          </div>
+    <nav
+      class={`bg-black/0  border-b-2 bg-clip-padding backdrop-blur-xl border-stone-100 sticky top-0 `}
+    >
+      <img
+        class="w-24 absolute ml-12 mt-[-20px]"
+        alt="logo team "
+        src={teamLogo}
+      />
+      <ul class="text-xl">
+        <div class="text-white flex justify-center">
+          <div></div>
           <a
             class="font-quest scaleInOut mt-2 ml-10"
             on:mouseenter={handleMouseEnter}
@@ -80,24 +87,25 @@
           >
             <img class="w-11 h-11" src={logo} alt="Instagram Logo" />
           </a>
-          
         </div>
       </ul>
     </nav>
-
-    
     {#if fadeIn}
       <!-- <div class="bg-orange-500 w-96 h-96 absolute z-2" transition:fade={{ duration: 2000 }}/> -->
-        
+
       <div
         class=" flex flex-col desktop:mt-48 notebook:mt-[100px] items-center z-1"
         transition:fade={{ duration: 2000 }}
       >
-        <h1 class="font-spyagency align-center font-bold text-opacity-100 notebook:text-[200px] desktop:text-[230px] text-white">
+        <h1
+          class="font-quest align-center font-bold text-opacity-100 notebook:text-[200px] desktop:text-[230px] text-white"
+        >
           Black Pearl {gen}
         </h1>
         <div>
-          <h1 class="font-sofia  desktop:text-[30px] text-2xl text-opacity-100 text-white">
+          <h1
+            class="font-quest desktop:text-[30px] text-2xl text-opacity-100 text-white"
+          >
             " Trained man wins since 2007 "
           </h1>
         </div>
@@ -109,7 +117,7 @@
   </div>
 
   <div class="mt-24 text-zinc-50 flex mb-16">
-    {#if y>50}
+    {#if y > 50}
       <div class="flex-1">
         <div
           transition:fly={{
@@ -117,24 +125,30 @@
             duration: 1000,
             x: -300,
           }}
-          class="pl-10 pt-5 pr-10 notebook:ml-24 notebook:mt-[120px] desktop:ml-48 desktop:mt-48 h-[300px] w-[550px] bg-orange-500"
+          class="pl-10 pt-5 pr-10 notebook:ml-24 notebook:mt-[100px] desktop:ml-48 desktop:mt-48 h-[400px] w-[550px] bg-orange-500"
         >
-          <h1 class="text-2xl font-quest-bold">About us</h1>
-          <div class="h-2"/>
+          <h1 class="text-4xl font-quest-bold pb-4 pt-2">About us</h1>
+          <div class="h-2" />
           <p class="font-quest">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            Our team made the decision to participate in this competition. Our
+            journey in the KMUTT Formula Student began back in 2007 when our
+            esteemed faculty member, Ajarn Surachet Chutima, had a vision. He
+            recognized the importance of developing well-rounded engineers with
+            hands-on skills that couldn’t be acquired through classroom
+            education. Our primary goal in forming this team was not focused on
+            winning the competition, but rather on nurturing the skills of our
+            team members. Ajarn Chutima firmly believed that the true value lies
+            in the experience gained during the competition. This competition
+            demonstrates our commitment to being well rounded engineers and
+            making a positive impact in the future field.
           </p>
         </div>
       </div>
     {/if}
 
-    {#if y>50}
+    {#if y > 50}
       <div class="flex-1 w-96">
-        <Carousel
-          pauseOnFocus
-          autoplay
-          autoplayDuration={2000}
-        >
+        <Carousel pauseOnFocus autoplay autoplayDuration={2000}>
           {#each images as image}
             <img src={image.car} alt={image.name} class="h-42 w-42" />
           {/each}
@@ -143,24 +157,19 @@
     {/if}
   </div>
 
-  <div class="">
-
-  </div>
-
-
+  <!-- {#if y >= 150}
+    <div class=" flex flex-col align-items-center translate-x-1">
+      <h2 class="font-quest text-4xl pb-24 text-center">Video</h2>
+      <VideoPlayer vide={vid} />
+    </div>
+  {/if} -->
 
   <div class="flex flex-col items-center border-t-4 pt-5 mb-10">
-      <h1 class="text-xl font-bold font-quest">Contact us</h1>
-      
-      <p class="font-quest mt-8">
-        tel: +7 (999) 99
-      </p>
-      <p class="font-quest mt-2">
-        instagram : blackpearlracingteam
-      </p>
-      <p class="font-quest mt-2">
-        facebook : blackpearlracingteam
-      </p>
+    <h1 class="text-xl font-bold font-quest">Contact us</h1>
+
+    <p class="font-quest mt-8">tel: +7 (999) 99</p>
+    <p class="font-quest mt-2">instagram : blackpearlracingteam</p>
+    <p class="font-quest mt-2">facebook : blackpearlracingteam</p>
   </div>
 </main>
 
