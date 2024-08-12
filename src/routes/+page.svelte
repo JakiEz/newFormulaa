@@ -94,14 +94,16 @@
       <!-- <div class="bg-orange-500 w-96 h-96 absolute z-2" transition:fade={{ duration: 2000 }}/> -->
 
       <div
-        class=" flex flex-col desktop:mt-48 notebook:mt-[100px] items-center z-1"
+        class=" flex flex-col items-center desktop:mt-48 notebook:mt-[100px] z-1"
         transition:fade={{ duration: 2000 }}
       >
         <h1
-          class="font-quest align-center font-bold text-opacity-100 notebook:text-[200px] desktop:text-[230px] text-white"
+          class="font-spy text-opacity-100 notebook:text-[140px] desktop:text-[170px] text-white"
         >
-          Black Pearl {gen}
+          Black Pearl
         </h1>
+     
+  
         <div>
           <h1
             class="font-quest desktop:text-[30px] text-2xl text-opacity-100 text-white"

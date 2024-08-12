@@ -2,24 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 /* 
 @font-face{
     font-family:"Ford";
     src:url('../static/spyagencysemital');
 } */
 
-@layer base {
-    @font-face{
-        font-family:"spyagency";
-        font-weight:700;
-        src:url('./spyagencysemital.ttf') format('ttf');
-        font-style:normal;
-    }
-
-}
-
+@font-face {
+    font-family: 'SpyAgency';
+    src: url('$lib/SpyAgencyBoldItalic-BLLnV.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
 html {
     scroll-behavior:smooth;
 }

@@ -7,10 +7,19 @@
   // export {default as Card} from "../components/Card.svelte"
 </script>
 
+<div class="flex transform-gpu hover:scale-125 duration-300 rounded-xl justify-center w-1/3 bg-stone-50  ">
+  <div class="flex-col items-center w-1/2 ">
+      <img class="p-6 mt-2 " alt=shirt src={shirt}/>
+      <p class="mt-4 mb-[10px] font-quest text-3xl text-gray-900">{items}</p>
+  </div>
+  <div class="text-2xl w-1/2 h-64 mt-8 text-center pt-24 border-gray-500 border-l-4 ">
+    <h1>POLO shirt</h1>
+    <button class="hover:bg-slate-600" type="button">Click Me!</button>
+  </div>
+  
 
-<div class="flex flex-col w-36 h-36 pb-8 hover:hover:ease-in-out duration 300 transform-gpu hover:scale-105 bg-slate-600 items-center mb-12">
-    <img class="w-24 h-24 mt-4" alt=shirt src={shirt}/>
-    <p class="mt-4 font-quest text-white">{items}</p>
+
 </div>
+<!-- <div class="h-screen "/> -->
 
 

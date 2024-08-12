@@ -10,7 +10,7 @@ export default {
       fontFamily: {
         quest: ["Questrial", "sans-serif"],
         sofia:"'Sofia Sans',sans-serif",
-        spyagency: "'spyagency', sans-serif"
+        'spy': ['SpyAgency', 'sans-serif'],
   
       },
     },

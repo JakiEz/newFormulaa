@@ -2,13 +2,14 @@
   import logo from "$lib/th-r.png";
   import teamLogo from "$lib/logoT.png";
   import shirtR from "$lib/shirtRemove.png";
+  import newShirt from "$lib/gshirtRemove.png";
   import Card from "../components/Card.svelte";
   import { fade, scale, slide, fly } from "svelte/transition";
   import { onMount } from "svelte";
   let sticky = true;
   let isHovered = false;
 
-  let items = ["one", "two", "three", "four","five","six","seven"];
+  let items = ["one"];
 
   function handleMouseEnter() {
     isHovered = true;
@@ -26,7 +27,7 @@
 
 <main class="bg-black">
   <nav
-    class={`bg-black/30 ${sticky ? "sticky top-0" : "fixed"} border-b-2 bg-clip-padding backdrop-blur-xl border-stone-100`}
+    class={`bg-black/30 ${sticky ? "sticky top-0" : "fixed"} border-b-2 bg-clip-padding backdrop-blur-xl border-stone-100 z-10`}
   >
     <img
       class="w-24 absolute ml-12 mt-[-20px]"
@@ -73,19 +74,21 @@
       >
         Merchadise
       </h1>
-      <div class="flex">
+      <!-- <div class="flex">
         <h1 class="text-white font-quest text-2xl p-12">Caps</h1>
         <h1 class="text-white font-quest text-2xl p-12">Shirt</h1>
         <h1 class="text-white font-quest text-2xl p-12">Models</h1>
 
-      </div>
+      </div> -->
     </div>
   {/if} 
-  <div class="grid grid-cols-3 gap-y-10 mt-24 justify-items-center -z-10">
+  <div class="flex justify-center gap-y-10 mt-24 z-10">
     {#each items as item}
-      <Card shirt={shirtR} items={item} />
+      <Card shirt={newShirt} items={item} />
     {/each}
+ 
   </div>
+  <div class="h-screen"/>
 </main>
 
 <style lang="postcss">
