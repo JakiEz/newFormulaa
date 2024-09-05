@@ -166,7 +166,7 @@
     </div>
   {/if} -->
 
-  <div class="flex flex-col items-center border-t-4 pt-5 mb-10">
+  <div class="flex flex-col items-center border-t-4 pt-5 mt-9 mb-10">
     <h1 class="text-xl font-bold font-quest">Contact us</h1>
 
     <p class="font-quest mt-8">tel: +7 (999) 99</p>
