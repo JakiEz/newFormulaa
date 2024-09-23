@@ -13,7 +13,6 @@
   import Carousel from "svelte-carousel";
   import vacTechp from "$lib/vacTechsW.png";
   import upBeatp from "$lib/upBeat.png";
-  import vid from "$lib/appsomething.mp4";
   import VideoPlayer from "./components/videoPlayer.svelte";
 
   let fadeIn = false;
@@ -88,6 +87,12 @@
           on:mouseleave={handleMouseLeave}
           href="/sponsor">Partner</a
         >
+        <a
+          class="font-quest scaleInOut mt-2 ml-10"
+          on:mouseenter={handleMouseEnter}
+          on:mouseleave={handleMouseLeave}
+          href="/gallery">Gallery
+        </a>
         <!-- <a
           class="scaleInOut mt-0.5 ml-10"
           on:mouseenter={handleMouseEnter}
@@ -106,15 +111,16 @@
   
     <!-- Content on top of the overlay -->
     <div class="relative flex flex-col items-center z-10">
-      <h1 class="font-spy text-opacity-100 text-[120px] text-white">
+      <h1 class="font-spy text-[120px] text-white" transition:fade={{duration:500}}>
         Black Pearl
       </h1>
       
       <div>
-        <h1 class="font-quest  text-2xl text-opacity-100 text-white">
+        <h1 class="font-quest  text-2xl text-opacity-100 text-white" transition:fade={{duration:500}}>
           " Trained man wins since 2007 "
         </h1>
       </div>
+
     </div>
   </div>
   

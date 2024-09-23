@@ -8,11 +8,9 @@
     import topCar from "$lib/topCar.jpg";
     import teamLogo from "$lib/logoT.png";
     import backCar from "$lib/backCar.jpg";
-    import Hover from "../components/Hover.svelte";
     import upBeat from "$lib/upBeat.png";
-    import Carousel from "svelte-carousel";
-    import vid from "$lib/appsomething.mp4";
-    import VideoPlayer from "../components/videoPlayer.svelte";
+    import vacTech from "$lib/vacTechSw.png";
+  
 
     let fadeIn = false;
     let isHovered = false;
@@ -33,9 +31,12 @@
       fadeIn = true;
     }
   
+    let isMounted = false;
+
     onMount(() => {
       toggleFadeIn();
       toggleSlidee();
+      isMounted = true;
     });
   
     function handleMouseEnter() {
@@ -54,9 +55,9 @@
   <svelte:window bind:scrollY={y} />
   
   <main>
-    <div class="bigb">
+    
       <nav
-        class={`bg-black/0  border-b-2 bg-clip-padding backdrop-blur-xl border-stone-100 sticky top-0 `}
+        class={`bg-black/30 bg-clip-padding backdrop-blur-xl sticky top-0 `}
       >
         <img
           class="w-24 absolute ml-12 mt-[-20px]"
@@ -87,23 +88,30 @@
               href="/sponsor">Partner</a
             >
             <a
+            class="font-quest scaleInOut mt-2 ml-10"
+            on:mouseenter={handleMouseEnter}
+            on:mouseleave={handleMouseLeave}
+            href="/gallery">Gallery
+            </a>
+            <!-- <a
               class="scaleInOut mt-0.5 ml-10"
               on:mouseenter={handleMouseEnter}
               on:mouseleave={handleMouseLeave}
               href="https://www.instagram.com/blackpearlracingteam/"
             >
               <img class="w-11 h-11" src={logo} alt="Instagram Logo" />
-            </a>
+            </a> -->
           </div>
         </ul>
       </nav>
       
-      <div class="flex justify-center ">
-        <h1>Premium</h1>
+      <div class="flex flex-col justify-center "transition:fade={{duration:400}}>
+        <h1 class="font-quest text-3xl ml- mt-12">Premium</h1>
         <div class="">
             <!-- <h1 class="font-quest text-white absolute text-9xl">UpBeat</h1> -->
-              <div class="bg-slate-500">
-                <img class="w-42 h-42 object-contain" alt="upbeat" src={upBeat} />
+              <div class="flex justify-center">
+                <img class="w-[180px] h-[150px] object-fit" alt="" src={upBeat} />
+                <img class="w-[180px] h-[150px] object-fit" alt="vac" src={vacTech} />
               </div>
         </div>
       </div>
@@ -129,20 +137,8 @@
       text-decoration: underline;
     }
   
-    .bigb {
-      width: 100vw;
-      height: 100vh;
-      position: absolute;
-      z-index: 10;
-      background: linear-gradient(
-        360deg,
-        #383838cc -10%,
-        rgba(0, 0, 0, 0.3) 100%
-      );
-    }
   
-    .bigb {
-      z-index: auto;
-    }
+  
+  
   </style>
   

@@ -25,9 +25,9 @@
   });
 </script>
 
-<main class="bg-black">
+<main>
   <nav
-    class={`bg-black/30 ${sticky ? "sticky top-0" : "fixed"} border-b-2 bg-clip-padding backdrop-blur-xl border-stone-100 z-10`}
+    class={`bg-black/30 ${sticky ? "sticky top-0" : "fixed"} bg-clip-padding backdrop-blur-xl  z-10`}
   >
     <img
       class="w-24 absolute ml-12 mt-[-20px]"
@@ -50,19 +50,25 @@
           href="/store">Store</a
         >
         <a
-              class="font-quest scaleInOut mt-2 ml-10"
-              on:mouseenter={handleMouseEnter}
-              on:mouseleave={handleMouseLeave}
-              href="/sponsor">Partner</a
-            >
+          class="font-quest scaleInOut mt-2 ml-10"
+          on:mouseenter={handleMouseEnter}
+          on:mouseleave={handleMouseLeave}
+          href="/sponsor">Partner</a
+        >
         <a
+          class="font-quest scaleInOut mt-2 ml-10"
+          on:mouseenter={handleMouseEnter}
+          on:mouseleave={handleMouseLeave}
+          href="/gallery">Gallery</a
+        >
+        <!-- <a
           class="scaleInOut mt-0.5 ml-10"
           on:mouseenter={handleMouseEnter}
           on:mouseleave={handleMouseLeave}
           href="https://www.instagram.com/blackpearlracingteam/"
         >
           <img class="w-11 h-11" src={logo} alt="Instagram Logo" />
-        </a>
+        </a> -->
       </div>
     </ul>
   </nav>
@@ -86,14 +92,13 @@
 
       </div> -->
     </div>
-  {/if} 
+  {/if}
   <div class="flex justify-center gap-y-10 mt-24 z-10">
     {#each items as item}
       <Card shirt={newShirt} items={item} />
     {/each}
- 
   </div>
-  <div class="h-screen"/>
+  <div class="h-screen" />
 </main>
 
 <style lang="postcss">
