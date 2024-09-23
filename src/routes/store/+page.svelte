@@ -49,7 +49,12 @@
           on:mouseleave={handleMouseLeave}
           href="/store">Store</a
         >
-
+        <a
+              class="font-quest scaleInOut mt-2 ml-10"
+              on:mouseenter={handleMouseEnter}
+              on:mouseleave={handleMouseLeave}
+              href="/sponsor">Partner</a
+            >
         <a
           class="scaleInOut mt-0.5 ml-10"
           on:mouseenter={handleMouseEnter}

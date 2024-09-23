@@ -7,9 +7,12 @@
   import background from "$lib/background.png";
   import topCar from "$lib/topCar.jpg";
   import teamLogo from "$lib/logoT.png";
+  import logoblack from "$lib/blackpearlblack.png";
   import backCar from "$lib/backCar.jpg";
   import Hover from "./components/Hover.svelte";
   import Carousel from "svelte-carousel";
+  import vacTechp from "$lib/vacTechsW.png";
+  import upBeatp from "$lib/upBeat.png";
   import vid from "$lib/appsomething.mp4";
   import VideoPlayer from "./components/videoPlayer.svelte";
 
@@ -19,6 +22,7 @@
   let navigating = false;
   let slidee = false;
 
+ 
   const images = [
     { name: "topCar", car: topCar },
     { name: "backCar", car: backCar },
@@ -45,80 +49,79 @@
     isHovered = false;
   }
 
-  let y = 10;
+  let y = 0;
   let gen = "XV";
   let sticky = true;
+  $: console.log(y);
 </script>
 
 <svelte:window bind:scrollY={y} />
 
+
 <main>
-  <div class="bigb">
-    <nav
-      class={`bg-black/0  border-b-2 bg-clip-padding backdrop-blur-xl border-stone-100 sticky top-0 `}
-    >
-      <img
-        class="w-24 absolute ml-12 mt-[-20px]"
-        alt="logo team "
-        src={teamLogo}
-      />
-      <ul class="text-xl">
-        <div class="text-white flex justify-center">
-          <div></div>
-          <a
-            class="font-quest scaleInOut mt-2 ml-10"
-            on:mouseenter={handleMouseEnter}
-            on:mouseleave={handleMouseLeave}
-            href="/store">Home</a
-          >
-
-          <a
-            class="font-quest scaleInOut mt-2 ml-10"
-            on:mouseenter={handleMouseEnter}
-            on:mouseleave={handleMouseLeave}
-            href="/store">Store</a
-          >
-
-          <a
-            class="scaleInOut mt-0.5 ml-10"
-            on:mouseenter={handleMouseEnter}
-            on:mouseleave={handleMouseLeave}
-            href="https://www.instagram.com/blackpearlracingteam/"
-          >
-            <img class="w-11 h-11" src={logo} alt="Instagram Logo" />
-          </a>
-        </div>
-      </ul>
-    </nav>
-    {#if fadeIn}
-      <!-- <div class="bg-orange-500 w-96 h-96 absolute z-2" transition:fade={{ duration: 2000 }}/> -->
-
-      <div
-        class=" flex flex-col items-center desktop:mt-48 notebook:mt-[100px] z-1"
-        transition:fade={{ duration: 2000 }}
-      >
-        <h1
-          class="font-spy text-opacity-100 notebook:text-[140px] desktop:text-[170px] text-white"
+  <nav
+     class={`bg-black/0 bg-clip-padding backdrop-blur-xl z-20 sticky top-0 ${y > 500 ? 'text-black' : 'text-white'}`}>
+    <img
+      class="bg-fixed w-24 absolute ml-12 mt-[-20px]"
+      alt="logo team "  
+      src={y > 500 ? logoblack : teamLogo}
+    />
+    <ul class="text-xl">
+      <div class=" flex justify-center ">
+        <a
+          class="font-quest scaleInOut mt-2 ml-10"
+          on:mouseenter={handleMouseEnter}
+          on:mouseleave={handleMouseLeave}
+          href="/">Home</a
         >
-          Black Pearl
-        </h1>
-     
-  
-        <div>
-          <h1
-            class="font-quest desktop:text-[30px] text-2xl text-opacity-100 text-white"
-          >
-            " Trained man wins since 2007 "
-          </h1>
-        </div>
-      </div>
-    {/if}
-  </div>
-  <div class="h-screen flex items-center justify-center">
-    <img class="object-cover h-full w-full" src={background} alt="bigcar" />
-  </div>
 
-  <div class="mt-24 text-zinc-50 flex mb-16">
+        <a
+          class="font-quest scaleInOut mt-2 ml-10"
+          on:mouseenter={handleMouseEnter}
+          on:mouseleave={handleMouseLeave}
+          href="/store">Store</a
+        >
+
+        <a
+          class="font-quest scaleInOut mt-2 ml-10"
+          on:mouseenter={handleMouseEnter}
+          on:mouseleave={handleMouseLeave}
+          href="/sponsor">Partner</a
+        >
+        <!-- <a
+          class="scaleInOut mt-0.5 ml-10"
+          on:mouseenter={handleMouseEnter}
+          on:mouseleave={handleMouseLeave}
+          href="https://www.instagram.com/blackpearlracingteam/"
+        >
+          <img class="w-12 h-12" src={logo} alt="Instagram Logo" />
+        </a> -->
+      </div>
+    </ul>
+  </nav>
+  
+  <div class="relative min-h-screen w-full bg-bigcar bg-cover z-10 bg-no-repeat  flex flex-col justify-center -mt-24">
+    <!-- Semi-transparent black overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
+  
+    <!-- Content on top of the overlay -->
+    <div class="relative flex flex-col items-center z-10">
+      <h1 class="font-spy text-opacity-100 text-[120px] text-white">
+        Black Pearl
+      </h1>
+      
+      <div>
+        <h1 class="font-quest  text-2xl text-opacity-100 text-white">
+          " Trained man wins since 2007 "
+        </h1>
+      </div>
+    </div>
+  </div>
+  
+
+  
+
+  <div class=" text-zinc-50 min-h-screen flex mb-16 ">
     {#if y > 50}
       <div class="flex-1">
         <div
@@ -149,7 +152,7 @@
     {/if}
 
     {#if y > 50}
-      <div class="flex-1 w-96">
+      <div class="flex-1 w-96 self-center">
         <Carousel pauseOnFocus autoplay autoplayDuration={2000}>
           {#each images as image}
             <img src={image.car} alt={image.name} class="h-42 w-42" />
@@ -165,11 +168,17 @@
       <VideoPlayer vide={vid} />
     </div>
   {/if} -->
+  <h1 class="text-center font-quest text-4xl text-bold">Our Partners</h1>
+  <div class="flex flex-row justify-center align-center">
+    <img class="w-[200px] h-[160px] m-10" alt={"vacTEchPic"} src={vacTechp} />
+    <img class="w-[200px] h-[160px] m-10" alt={"upBeatPic"} src={upBeatp} />
+  </div>
 
-  <div class="flex flex-col items-center border-t-4 pt-5 mt-9 mb-10">
-    <h1 class="text-xl font-bold font-quest">Contact us</h1>
+  <div class="bg-slate-400 w-full h-1 mb-8"/>
 
-    <p class="font-quest mt-8">tel: +7 (999) 99</p>
+  <div class="flex flex-col items-center pt-5  mb-10">
+    <h1 class="mt-25 text-l font-bold font-quest">Contact us</h1>
+    <p class="font-quest mt-4">tel: +7 (999) 99</p>
     <p class="font-quest mt-2">instagram : blackpearlracingteam</p>
     <p class="font-quest mt-2">facebook : blackpearlracingteam</p>
   </div>
@@ -195,19 +204,4 @@
     text-decoration: underline;
   }
 
-  .bigb {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    z-index: 10;
-    background: linear-gradient(
-      360deg,
-      #383838cc -10%,
-      rgba(0, 0, 0, 0.3) 100%
-    );
-  }
-
-  .bigb {
-    z-index: auto;
-  }
 </style>

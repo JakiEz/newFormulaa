@@ -7,6 +7,9 @@ export default {
       notebook: "1270px",
     },
     extend: {
+      backgroundImage: {
+        'bigcar' : "url('$lib/background.png')"
+      },
       fontFamily: {
         quest: ["Questrial", "sans-serif"],
         sofia:"'Sofia Sans',sans-serif",
